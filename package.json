@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "gatsby": "^2.24.91",
+    "gatsby-plugin-canonical-urls": "^2.3.13",
     "gatsby-plugin-react-helmet": "^3.3.14",
+    "gatsby-plugin-s3": "^0.3.8",
     "gatsby-plugin-sass": "^2.3.22",
     "gatsby-plugin-sitemap": "^2.4.17",
     "gatsby-source-contentful": "^3.0.6",

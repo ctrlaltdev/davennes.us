@@ -24,13 +24,15 @@ export default function Home() {
     <Helmet>
       <title>404 - Not Found</title>
     </Helmet>
-    <div id="error404">
-      <h1>
-        <span>4</span>
-        <span className="looking"><span>_</span></span>
-        <span>4</span>
-      </h1>
-      <p className="subtitle">Not Found</p>
+    <div className="wrapper404">
+      <div id="error404">
+        <h1>
+          <span>4</span>
+          <span className="looking"><span>_</span></span>
+          <span>4</span>
+        </h1>
+        <p className="subtitle">Not Found</p>
+      </div>
     </div>
   </HomeLayout>
   )

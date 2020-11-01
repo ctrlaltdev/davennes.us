@@ -12,7 +12,12 @@ resource "aws_cloudfront_origin_access_identity" "oai" {
 
 resource "aws_s3_bucket" "b" {
   bucket = "${var.prefix}-${var.env}-${var.name}"
-  acl    = "private"
+  acl    = "public-read"
+
+  website {
+    index_document = "index.html"
+    error_document = "index.html"
+  }
 
   server_side_encryption_configuration {
     rule {
@@ -47,6 +52,13 @@ resource "aws_s3_bucket_policy" "b" {
       },
       "Action": "s3:GetObject",
       "Resource": "${aws_s3_bucket.b.arn}/*"
+    },
+    {
+      "Sid": "PublicRead",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "${aws_s3_bucket.b.arn}/*"
     }
   ]
 }
@@ -68,13 +80,38 @@ resource "aws_cloudfront_distribution" "d" {
   ]
 
   origin {
-    domain_name = aws_s3_bucket.b.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.b.website_endpoint
     origin_id   = "s3-${var.name}"
 
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
+    custom_origin_config {
+      http_port                = 80
+      https_port               = 443
+      origin_keepalive_timeout = 5
+      origin_protocol_policy   = "https-only"
+      origin_read_timeout      = 30
+      origin_ssl_protocols     = [
+        "TLSv1",
+        "TLSv1.1",
+        "TLSv1.2"
+      ]
     }
+
+    # s3_origin_config {
+    #   origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
+    # }
   }
+
+  # custom_error_response {
+  #   error_code         = 403
+  #   response_code      = 200
+  #   response_page_path = "/404.html"
+  # }
+
+  # custom_error_response {
+  #   error_code         = 404
+  #   response_code      = 200
+  #   response_page_path = "/404.html"
+  # }
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]

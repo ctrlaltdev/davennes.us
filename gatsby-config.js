@@ -12,6 +12,20 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
-    `gatsby-plugin-sitemap`
-  ],
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "0x766f6964-aurelien-davennes.us",
+        protocol: "https",
+        hostname: "davennes.us",
+      }
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: 'https://davennes.us'
+      }
+    }
+  ]
 }
