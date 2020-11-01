@@ -32,5 +32,5 @@ npm-install: clean
 build-site: npm-install
 	npm run build
 
-upload: build-site
-	aws s3 sync ./public s3://0x766f6964-aurelien-davennes.us/ --delete
+upload:
+	aws s3 sync ./public s3://0x766f6964-aurelien-davennes.us/ --delete --profile personal
