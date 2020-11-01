@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{RXBc:function(n,e,t){"use strict";t.r(e),t.d(e,"default",(function(){return r}));var i=t("q1tI"),c=t.n(i);t("WF7/");function r(){return c.a.createElement("div",{id:"wrap"},c.a.createElement("div",{id:"choubi"},"Aurelien Davennes"))}},"WF7/":function(n,e,t){}}]);
+//# sourceMappingURL=component---src-pages-index-js-1f453910a3015bd9b2a2.js.map
