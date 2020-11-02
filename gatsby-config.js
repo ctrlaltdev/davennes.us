@@ -6,6 +6,7 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: 'Aurelien Davennes',
+    description: 'Born and raised in southern France, Aurélien (he/his) is doing his Ph.D. in American Studies and Ethnicity, with a focus on: anthropology, literary theory, affect studies, postcolonial studies, witchcraft and sorcery, magic, sexuality, and diaspora',
     siteUrl: `https://davennes.us`
   },
   plugins: [
