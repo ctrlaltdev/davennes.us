@@ -7,7 +7,8 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    siteUrl: `https://davennes.us`,
+    title: 'Aurelien Davennes',
+    siteUrl: `https://davennes.us`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -18,13 +19,22 @@ module.exports = {
       options: {
         bucketName: "0x766f6964-aurelien-davennes.us",
         protocol: "https",
-        hostname: "davennes.us",
+        hostname: "davennes.us"
       }
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: 'https://davennes.us'
+      }
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `xzq75axp1e5g`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        localeFilter: locale => locale.code === 'en-US',
+        downloadLocal: true
       }
     }
   ]
