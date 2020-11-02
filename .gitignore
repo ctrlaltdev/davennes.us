@@ -206,3 +206,6 @@ override.tf.json
 # gatsby files
 .cache/
 public
+
+# env files
+.env.*

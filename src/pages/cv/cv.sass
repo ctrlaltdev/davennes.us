@@ -1,0 +1,78 @@
+.cv
+  max-width: 1200px
+  margin: 4rem auto
+  padding: 0 1rem
+
+  header
+    margin-bottom: 4rem
+
+  &__title
+    font-size: 6rem
+    font-variant: small-caps
+
+    @media (orientation: portrait)
+      font-size: 4rem
+
+  &__section
+    margin: 30vh 0
+
+    &-title
+      font-family: 'Open Sans', sans-serif
+      font-weight: 300
+      font-size: 2rem
+      margin-top: 3rem
+      margin-bottom: 1rem
+
+    h2
+      font-size: 3rem
+      font-weight: 700
+      text-transform: uppercase
+
+    &:first-of-type
+
+  &__article
+    font-size: 2rem
+    margin: 5rem 0
+    display: flex
+    flex-flow: row nowrap
+    @media (orientation: portrait)
+      display: block
+
+    aside
+      flex: 0 0 auto
+      width: 20rem
+      @media (orientation: portrait)
+        width: unset
+        margin-bottom: 2rem
+
+    &-content
+      .markdown
+        line-height: 1.5
+        li
+          padding-left: 3rem
+          margin: 2rem
+        li:before
+          content: '\2056'
+          margin-left: -3rem
+          margin-right: 2rem
+    
+    h3
+      font-size: 2rem
+      margin-bottom: 1rem
+  
+  &__list
+    font-size: 2rem
+    margin: 5rem 0
+
+    li
+      margin-bottom: 2rem
+
+  &__interests
+    columns: 3
+    @media (orientation: portrait)
+      columns: 1
+
+  &__langs
+    columns: 4
+    @media (orientation: portrait)
+      columns: 2

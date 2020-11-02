@@ -33,4 +33,4 @@ build-site: npm-install
 	npm run build
 
 upload:
-	aws s3 sync ./public s3://0x766f6964-aurelien-davennes.us/ --delete --profile personal
+	aws s3 sync ./public s3://davennes.us/ --delete --profile personal

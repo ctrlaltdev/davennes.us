@@ -11,7 +11,7 @@ resource "aws_cloudfront_origin_access_identity" "oai" {
 }
 
 resource "aws_s3_bucket" "b" {
-  bucket = "${var.prefix}-${var.env}-${var.name}"
+  bucket = var.name
   acl    = "public-read"
 
   website {
@@ -80,6 +80,7 @@ resource "aws_cloudfront_distribution" "d" {
   ]
 
   origin {
+    # domain_name = aws_s3_bucket.b.bucket_domain_name
     domain_name = aws_s3_bucket.b.website_endpoint
     origin_id   = "s3-${var.name}"
 
@@ -145,4 +146,6 @@ resource "aws_cloudfront_distribution" "d" {
       restriction_type = "none"
     }
   }
+
+  depends_on = [aws_s3_bucket.b]
 }
