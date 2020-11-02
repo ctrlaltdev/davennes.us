@@ -35,6 +35,12 @@ module.exports = {
         localeFilter: locale => locale.code === 'en-US',
         downloadLocal: true
       }
+    },
+    {
+      resolve: 'gatsby-plugin-remove-generator',
+      options: {
+        content: 'An old Toaster in a Garage v1.6.3'
+      }
     }
   ]
 }
