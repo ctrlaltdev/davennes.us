@@ -137,9 +137,7 @@ const CV = () => {
       query={CVQuery}
       render={data => (
         <div className='cv'>
-          <Helmet>
-            <title>Aurelien Davennes - Curriculum Vitae</title>
-          </Helmet>
+          <Helmet title='Aurelien Davennes - Curriculum Vitae' />
           <header>
             <h1 className='cv__title'>Aurelien Davennes<br />{data.contentfulCurriculumVitae.position}</h1>
           </header>

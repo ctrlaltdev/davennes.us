@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Deploy
+
+jobs:
+  deploy:
+    name: Build website
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Package
+      run: |
+        npm ci --prod
+        npm run build
+
+    - name: Configure AWS
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+    - name: Upload files
+      run: |
+        aws s3 sync ./public/ s3://davennes.us/ --delete
+
+    - name: Invalidate Cache
+      run: |
+        aws cloudfront create-invalidation --distribution-id E3SS6L739WR8YP --paths "/*"

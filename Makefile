@@ -34,3 +34,6 @@ build-site: npm-install
 
 upload:
 	aws s3 sync ./public s3://davennes.us/ --delete --profile personal
+
+invalidate-cache:
+	aws cloudfront create-invalidation --distribution-id E3SS6L739WR8YP --paths "/*" --profile personal
