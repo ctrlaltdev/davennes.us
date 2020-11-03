@@ -20,6 +20,7 @@ jobs:
       with:
         token: ${{ github.token }}
         target_url: https://davennes.us
+        environment: Website
 
     - name: Package
       env:
@@ -43,7 +44,7 @@ jobs:
       run: |
         aws cloudfront create-invalidation --distribution-id E3SS6L739WR8YP --paths "/*"
 
-    - name: Update deployment status
+    - name: Deployment success
       if: success()
       uses: chrnorm/deployment-status@releases/v1
       with:
@@ -52,7 +53,7 @@ jobs:
         state: "success"
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
-    - name: Update deployment status
+    - name: Deployment failure
       if: failure()
       uses: chrnorm/deployment-status@releases/v1
       with:
