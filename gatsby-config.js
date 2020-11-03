@@ -1,8 +1,6 @@
-if (!process.env.CI) {
-  require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`
-  })
-}
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 
 module.exports = {
   /* Your site config here */
