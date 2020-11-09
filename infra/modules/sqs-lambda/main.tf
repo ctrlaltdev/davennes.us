@@ -19,7 +19,7 @@ resource "random_id" "name_suffix" {
 resource "aws_sqs_queue" "queue" {
   name = "${var.prefix}-${var.env}-${random_id.name_suffix.hex}"
 
-  delay_seconds              = 300
+  delay_seconds              = 0
   max_message_size           = 2048
   visibility_timeout_seconds = 1800
   message_retention_seconds  = 86400
@@ -57,6 +57,12 @@ resource "aws_sqs_queue_policy" "queue" {
   )
 }
 
+resource "aws_cloudwatch_event_rule" "event_rule" {
+  name                = "${var.prefix}-${var.env}-${random_id.name_suffix.hex}"
+  description         = "Check Hook Messages"
+  schedule_expression = "cron(0 4,20 * * ? *)"
+}
+
 data "archive_file" "hook" {
   type        = "zip"
   source_dir  = "lambda/hook"
@@ -84,11 +90,21 @@ resource "aws_lambda_function" "lambda" {
       GH_ORG       = "ctrlaltdev"
       GH_REPO      = "davennes.us"
       GH_WORKFLOW  = "3350482"
+      QUEUE_ID = aws_sqs_queue.queue.id
     }
   }
 }
 
-resource "aws_lambda_event_source_mapping" "hook" {
-  event_source_arn = aws_sqs_queue.queue.arn
-  function_name    = aws_lambda_function.lambda.arn
+resource "aws_cloudwatch_event_target" "event_target" {
+  rule      = aws_cloudwatch_event_rule.event_rule.name
+  target_id = "lambda"
+  arn       = aws_lambda_function.lambda.arn
+}
+
+resource "aws_lambda_permission" "event" {
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.event_rule.arn
 }
