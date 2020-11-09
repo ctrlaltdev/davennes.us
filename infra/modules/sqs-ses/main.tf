@@ -26,6 +26,7 @@ resource "aws_sqs_queue" "queue" {
   receive_wait_time_seconds  = 20
 }
 
+
 resource "aws_sqs_queue_policy" "queue" {
   queue_url = aws_sqs_queue.queue.id
 
@@ -57,48 +58,34 @@ resource "aws_sqs_queue_policy" "queue" {
   )
 }
 
-resource "aws_cloudwatch_event_rule" "event_rule" {
-  name                = "${var.prefix}-${var.env}-${random_id.name_suffix.hex}"
-  description         = "Check Hook Messages"
-  schedule_expression = "cron(0 4,20 * * ? *)"
 
-  lifecycle {
-    ignore_changes = [name_prefix]
-  }
-}
-
-data "archive_file" "hook" {
+data "archive_file" "email" {
   type        = "zip"
-  source_dir  = "lambda/hook"
-  output_path = "lambda/hook.zip"
+  source_dir  = "lambda/email"
+  output_path = "lambda/email.zip"
 }
 
 resource "aws_lambda_function" "lambda" {
-  description   = "CI/CD Trigger"
+  description   = "Send Emails"
   function_name = "${var.prefix}-${var.env}-${random_id.name_suffix.hex}"
 
   role = aws_iam_role.lambda.arn
 
-  handler     = "hook.handler"
+  handler     = "email.handler"
   memory_size = 128
   runtime     = "python3.8"
   timeout     = 120
 
-  filename         = "lambda/hook.zip"
-  source_code_hash = data.archive_file.hook.output_base64sha256
+  filename         = "lambda/email.zip"
+  source_code_hash = data.archive_file.email.output_base64sha256
 
 
   environment {
     variables = {
-      GH_TOKEN_SSM = "/${var.prefix}/${var.env}/GH_TOKEN"
-      GH_ORG       = "ctrlaltdev"
-      GH_REPO      = "davennes.us"
-      GH_WORKFLOW  = "3350482"
-      QUEUE_ID     = aws_sqs_queue.queue.id
+      EMAIL_SSM = "/${var.prefix}/${var.env}/EMAIL"
     }
   }
 }
-
 
 resource "aws_cloudwatch_log_group" "lambda" {
   name = "/aws/lambda/${aws_lambda_function.lambda.function_name}"
@@ -106,16 +93,7 @@ resource "aws_cloudwatch_log_group" "lambda" {
   retention_in_days = 1
 }
 
-resource "aws_cloudwatch_event_target" "event_target" {
-  rule      = aws_cloudwatch_event_rule.event_rule.name
-  target_id = "lambda"
-  arn       = aws_lambda_function.lambda.arn
-}
-
-resource "aws_lambda_permission" "event" {
-  statement_id  = "AllowExecutionFromCloudWatch"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.lambda.function_name
-  principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.event_rule.arn
+resource "aws_lambda_event_source_mapping" "event" {
+  event_source_arn = aws_sqs_queue.queue.arn
+  function_name    = aws_lambda_function.lambda.arn
 }
