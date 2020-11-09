@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import PageLayout from '../../layouts/Page/'
 import { StaticQuery, graphql } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
 import './cv.sass'
@@ -27,6 +27,9 @@ const renderPublications = items => items.map(item => {
       <div className='cv__article-content'>
         <h3>{ item.title }</h3>
         <p>{ item.subtitle }</p>
+        <div className='markdown'>
+          <ReactMarkdown>{ item.description.description }</ReactMarkdown>
+        </div>
       </div>
     </article>
   )
@@ -133,63 +136,64 @@ const renderLanguages = items => <ul className='cv__list cv__langs'>{ items.map(
 const CV = () => {
   console.info(CVQuery)
   return (
-    <StaticQuery
-      query={CVQuery}
-      render={data => (
-        <div className='cv'>
-          <Helmet title='Aurelien Davennes - Curriculum Vitae' />
-          <header>
-            <h1 className='cv__title'>Aurelien Davennes<br />{data.contentfulCurriculumVitae.position}</h1>
-          </header>
-          <section className='cv__section'>
-            <h2>Education</h2>
-            { renderEducation(data.contentfulCurriculumVitae.education) }
-          </section>
-          <section className='cv__section'>
-            <h2>Publications</h2>
-            { renderPublications(data.contentfulCurriculumVitae.publications) }
-          </section>
-          <section className='cv__section'>
-            <h2>Fellowships &amp; Awards</h2>
-            { renderAwards(data.contentfulCurriculumVitae.awards) }
-          </section>
-          <section className='cv__section'>
-            <h2>Teaching Experience</h2>
-            { renderTeaching(data.contentfulCurriculumVitae.teaching) }
-          </section>
-          <section className='cv__section'>
-            <h2>Conference &amp; Presentations</h2>
-            { renderConference('Conference Presentation', data.contentfulCurriculumVitae.conferencePresentations) }
-            { renderConference('Conference Organization', data.contentfulCurriculumVitae.conferenceOrganization) }
-            { renderConference('Invited Talks', data.contentfulCurriculumVitae.invitedTalks) }
-          </section>
-          <section className='cv__section'>
-            <h2>Responsabilities &amp; University Service</h2>
-            { renderResponsabilities(data.contentfulCurriculumVitae.responsabilities) }
-          </section>
-          <section className='cv__section'>
-            <h2>Employment</h2>
-            { renderEmployment(data.contentfulCurriculumVitae.employment) }
-          </section>
-          <section className='cv__section'>
-            <h2>Community Involvement</h2>
-            { renderVolunteering(data.contentfulCurriculumVitae.communityInvolvement) }
-          </section>
-          <section className='cv__section'>
-            <h2>Professional Affiliations</h2>
-            { renderAffiliations(data.contentfulCurriculumVitae.affiliations) }
-          </section>
-          <section className='cv__section'>
-            <h2>Fields of Interest</h2>
-            { renderInterests(data.contentfulCurriculumVitae.interests) }
-          </section>
-          <section className='cv__section'>
-            <h2>Languages</h2>
-            { renderLanguages(data.contentfulCurriculumVitae.languages) }
-          </section>
-        </div>
-      )}
-    />
+    <PageLayout title='Curriculum Vitae'>
+      <StaticQuery
+        query={CVQuery}
+        render={data => (
+          <div className='cv'>
+            <header>
+              <h1 className='cv__title'>Aurelien Davennes<br />{data.contentfulCurriculumVitae.position}</h1>
+            </header>
+            <section className='cv__section'>
+              <h2>Education</h2>
+              { renderEducation(data.contentfulCurriculumVitae.education) }
+            </section>
+            <section className='cv__section'>
+              <h2>Publications</h2>
+              { renderPublications(data.contentfulCurriculumVitae.publications) }
+            </section>
+            <section className='cv__section'>
+              <h2>Fellowships &amp; Awards</h2>
+              { renderAwards(data.contentfulCurriculumVitae.awards) }
+            </section>
+            <section className='cv__section'>
+              <h2>Teaching Experience</h2>
+              { renderTeaching(data.contentfulCurriculumVitae.teaching) }
+            </section>
+            <section className='cv__section'>
+              <h2>Conference &amp; Presentations</h2>
+              { renderConference('Conference Presentation', data.contentfulCurriculumVitae.conferencePresentations) }
+              { renderConference('Conference Organization', data.contentfulCurriculumVitae.conferenceOrganization) }
+              { renderConference('Invited Talks', data.contentfulCurriculumVitae.invitedTalks) }
+            </section>
+            <section className='cv__section'>
+              <h2>Responsabilities &amp; University Service</h2>
+              { renderResponsabilities(data.contentfulCurriculumVitae.responsabilities) }
+            </section>
+            <section className='cv__section'>
+              <h2>Employment</h2>
+              { renderEmployment(data.contentfulCurriculumVitae.employment) }
+            </section>
+            <section className='cv__section'>
+              <h2>Community Involvement</h2>
+              { renderVolunteering(data.contentfulCurriculumVitae.communityInvolvement) }
+            </section>
+            <section className='cv__section'>
+              <h2>Professional Affiliations</h2>
+              { renderAffiliations(data.contentfulCurriculumVitae.affiliations) }
+            </section>
+            <section className='cv__section'>
+              <h2>Fields of Interest</h2>
+              { renderInterests(data.contentfulCurriculumVitae.interests) }
+            </section>
+            <section className='cv__section'>
+              <h2>Languages</h2>
+              { renderLanguages(data.contentfulCurriculumVitae.languages) }
+            </section>
+          </div>
+        )}
+      />
+    </PageLayout>
   )
 }
 

@@ -1,0 +1,40 @@
+.pub
+  &__article
+    font-size: 2rem
+    margin: 5rem 0
+    display: flex
+    flex-flow: row nowrap
+    @media (orientation: portrait)
+      display: block
+
+    aside
+      flex: 0 0 auto
+      width: 20rem
+      @media (orientation: portrait)
+        width: unset
+        margin-bottom: 2rem
+
+    &-content
+      margin-left: 2rem
+      @media (orientation: portrait)
+        margin-left: unset
+
+      .markdown
+        line-height: 1.5
+        em
+          font-style: italic
+        li
+          padding-left: 3rem
+          margin: 2rem
+        li:before
+          content: '\2056'
+          margin-left: -3rem
+          margin-right: 2rem
+    
+    h3
+      font-size: 2rem
+      margin-bottom: 1rem
+    
+  &__img
+    width: 100%
+    height: auto

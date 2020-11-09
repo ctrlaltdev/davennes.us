@@ -2,6 +2,8 @@ import React from 'react'
 import './reset.css'
 import './global.sass'
 
-export default function HomeLayout({ children }) {
+const HomeLayout = ({ children }) => {
   return <>{children}</>
 }
+
+export default HomeLayout
