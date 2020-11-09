@@ -47,19 +47,19 @@ const Contact = () => {
       <div className='contact'>
         <form onSubmit={ sendMessage }>
           <fieldset>
-            <input className='contact__name' name='name' type='text' required placeholder='Name' disabled={ sent } onChange={e => setName(e.value)} value={ name } />
+            <input className='contact__name' name='name' type='text' required placeholder='Name' disabled={ sent } onChange={e => setName(e.target.value)} value={ name } />
           </fieldset>
           <fieldset>
-            <input className='contact__email' name='email' type='email' required placeholder='your@email.com' disabled={ sent } onChange={e => setEmail(e.value)} value={ email } />
+            <input className='contact__email' name='email' type='email' required placeholder='your@email.com' disabled={ sent } onChange={e => setEmail(e.target.value)} value={ email } />
           </fieldset>
           <fieldset>
-            <input className='contact__subject' name='subject' type='text' required placeholder='Subject' disabled={ sent } onChange={e => setSubject(e.value)} value={ subject } />
+            <input className='contact__subject' name='subject' type='text' required placeholder='Subject' disabled={ sent } onChange={e => setSubject(e.target.value)} value={ subject } />
           </fieldset>
           <fieldset>
-            <textarea className='contact__body' name='body' required disabled={ sent } onChange={e => setBody(e.value)} value={ body } />
+            <textarea className='contact__body' name='body' required disabled={ sent } onChange={e => setBody(e.target.value)} value={ body } />
           </fieldset>
           <fieldset>
-            <input className='contact__tel' type='tel' name='tel' disabled={ sent } onChange={e => setTel(e.value)} value={ tel } tabIndex={-1} />
+            <input className='contact__tel' type='tel' name='tel' disabled={ sent } onChange={e => setTel(e.target.value)} value={ tel } tabIndex={-1} />
           </fieldset>
           <fieldset>
             <input className='contact__send' type='submit' disabled={ sent } value={ submit } />
