@@ -32,8 +32,8 @@ const Contact = () => {
         Action: 'SendMessage',
         MessageBody: JSON.stringify(msg)
       }))
-      .then(r => r.json())
-      .then(r => {
+      .then(r => r.text())
+      .then(() => {
         setSubmit('Sent')
       })
       .catch(e => {
