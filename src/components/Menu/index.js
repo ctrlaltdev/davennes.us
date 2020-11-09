@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import classNames from 'classnames'
 import { Link } from 'gatsby'
 import './menu.sass'
 
 const Menu = () => {
+  const [open, toggleOpen] = useState(false)
+
   return (
-    <nav className='menu'>
-      <ul className='menu__list'>
+    <nav className={classNames('menu', open ? 'menu--open' : 'menu--closed')}>
+      <button className='menu__burger' onClick={() => toggleOpen(!open)}>X</button>
+      <ul className={classNames('menu__list', open ? 'menu__list--open' : 'menu__list--closed')}>
         <li className='menu__item'>
           <Link to='/' partiallyActive={ false } activeClassName='menu__current'>Home</Link>
         </li>
