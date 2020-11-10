@@ -8,10 +8,17 @@ const Menu = () => {
 
   return (
     <nav className={classNames('menu', open ? 'menu--open' : 'menu--closed')}>
-      <button className='menu__burger' onClick={() => toggleOpen(!open)}>X</button>
+      <button className={classNames('menu__burger', open ? 'menu__burger--open' : 'menu__burger--closed')} onClick={() => toggleOpen(!open)}>
+      <svg fill="transparent">
+        <line x1="20%" y1="50%" x2="80%" y2="50%"/>
+        <line x1="20%" y1="50%" x2="80%" y2="50%"/>
+        <line x1="20%" y1="50%" x2="80%" y2="50%"/>
+        <circle cx="50%" cy="50%" r="20" fill="transparent" />
+      </svg>
+      </button>
       <ul className={classNames('menu__list', open ? 'menu__list--open' : 'menu__list--closed')}>
         <li className='menu__item'>
-          <Link to='/' partiallyActive={ false } activeClassName='menu__current'>Home</Link>
+          <Link to='/' partiallyActive={ false } activeclassname='menu__current'>Home</Link>
         </li>
         <li className='menu__item'>
           <Link to='/about/' partiallyActive={ true } activeClassName='menu__current'>About</Link>
