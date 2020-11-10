@@ -41,6 +41,12 @@ module.exports = {
       options: {
         content: 'An old Toaster in a Garage v1.6.3'
       }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     }
   ]
 }
