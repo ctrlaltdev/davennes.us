@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import PageLayout from '../../layouts/Page/'
 import './contact.sass'
 
-const Contact = () => {
+const ContactPage = () => {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [subject, setSubject] = useState()
@@ -70,4 +70,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default ContactPage

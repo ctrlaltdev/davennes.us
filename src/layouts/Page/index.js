@@ -1,21 +1,25 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import Menu from '../../components/Menu/'
+import Footer from '../../components/Footer/'
 import './page.sass'
 
 const PageLayout = ({ title, children }) => {
   return (
     <>
       <Helmet title={`${title} - Aurelien Davennes`} />
-      <header>
-        <Menu />
-      </header>
-      <main className='page'>
+      <div className='page'>
         <header>
-          <h1>{ title }</h1>
+          <Menu />
         </header>
-        { children }
-      </main>
+        <main>
+          <header>
+            <h1>{ title }</h1>
+          </header>
+          { children }
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

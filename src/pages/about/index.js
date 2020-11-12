@@ -4,7 +4,7 @@ import PageLayout from '../../layouts/Page/'
 import ReactMarkdown from 'react-markdown'
 import './about.sass'
 
-const About = () => {
+const AboutPage = () => {
   return (
     <PageLayout title='About Me'>
       <StaticQuery
@@ -32,4 +32,4 @@ const AboutQuery = graphql`
 }
 `
 
-export default About
+export default AboutPage
