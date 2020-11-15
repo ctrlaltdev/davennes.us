@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'gatsby'
-import HomeLayout from '../layouts/Home'
 import './404.sass'
 
 export default function Home() {
@@ -24,10 +23,8 @@ export default function Home() {
   useEffect(looking, [])
 
   return (
-  <HomeLayout>
-    <Helmet>
-      <title>404 - Not Found</title>
-    </Helmet>
+  <>
+    <Helmet title='404 - Not Found' />
     <Link to='/'>
       <div className='error404'>
         <div className='inner404'>
@@ -40,6 +37,6 @@ export default function Home() {
         </div>
       </div>
     </Link>
-  </HomeLayout>
+  </>
   )
 }

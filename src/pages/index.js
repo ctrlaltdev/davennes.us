@@ -1,15 +1,13 @@
 import React from 'react'
-import HomeLayout from '../layouts/Home'
-import { Helmet } from 'react-helmet'
+import PageLayout from '../layouts/Page/'
 import './index.sass'
 
 export default function Home() {
   return (
-  <HomeLayout>
-    <Helmet title='Aurelien Davennes' />
+  <PageLayout>
     <div className='home'>
-      <div className='home__choubi'>Aurelien Davennes</div>
+      <h1 className='home__choubi'>Aurelien <br />Davennes</h1>
     </div>
-  </HomeLayout>
+  </PageLayout>
   )
 }
