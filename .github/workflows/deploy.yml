@@ -22,8 +22,8 @@ jobs:
       id: deployment
       with:
         token: ${{ github.token }}
-        target_url: https://davennes.us
-        environment: Website
+        target_url: "https://davennes.us"
+        environment: "Website"
 
     - name: Package
       env:
@@ -52,7 +52,7 @@ jobs:
       uses: chrnorm/deployment-status@releases/v1
       with:
         token: "${{ github.token }}"
-        target_url: https://davennes.us
+        target_url: "https://davennes.us"
         state: "success"
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
@@ -61,6 +61,6 @@ jobs:
       uses: chrnorm/deployment-status@releases/v1
       with:
         token: "${{ github.token }}"
-        target_url: https://davennes.us
+        target_url: "https://davennes.us"
         state: "failure"
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
