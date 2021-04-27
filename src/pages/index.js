@@ -6,7 +6,7 @@ export default function Home() {
   return (
   <PageLayout>
     <div className='home'>
-      <h1 className='home__choubi'>Aurelien <br />Davennes</h1>
+      <h1 className='home__choubi'>Aurélien <br />Davennes</h1>
     </div>
   </PageLayout>
   )

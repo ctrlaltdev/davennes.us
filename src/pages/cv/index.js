@@ -142,7 +142,7 @@ const CV = () => {
         render={data => (
           <div className='cv'>
             <header>
-              <h1 className='cv__title'>Aurelien Davennes<br />{data.contentfulCurriculumVitae.position}</h1>
+              <h1 className='cv__title'>Aurélien Davennes<br />{data.contentfulCurriculumVitae.position}</h1>
             </header>
             <section className='cv__section'>
               <h2>Education</h2>

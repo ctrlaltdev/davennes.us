@@ -10,7 +10,7 @@ import './page.sass'
 const PageLayout = ({ title, children }) => {
   return (
     <>
-      <Helmet title={ title ? `${title} - Aurelien Davennes` : 'Aurelien Davennes' } />
+      <Helmet title={ title ? `${title} - Aurélien Davennes` : 'Aurelién Davennes' } />
       <div className='page'>
         <header>
           <Menu />
