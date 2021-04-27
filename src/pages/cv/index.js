@@ -149,6 +149,10 @@ const CV = () => {
               { renderEducation(data.contentfulCurriculumVitae.education) }
             </section>
             <section className='cv__section'>
+              <h2>Theoretical Specializations</h2>
+              { renderInterests(data.contentfulCurriculumVitae.interests) }
+            </section>
+            <section className='cv__section'>
               <h2>Publications</h2>
               { renderPublications(data.contentfulCurriculumVitae.publications) }
             </section>
@@ -181,10 +185,6 @@ const CV = () => {
             <section className='cv__section'>
               <h2>Professional Affiliations</h2>
               { renderAffiliations(data.contentfulCurriculumVitae.affiliations) }
-            </section>
-            <section className='cv__section'>
-              <h2>Fields of Interest</h2>
-              { renderInterests(data.contentfulCurriculumVitae.interests) }
             </section>
             <section className='cv__section'>
               <h2>Languages</h2>
