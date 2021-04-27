@@ -86,7 +86,7 @@ const renderResponsabilities = items => items.map(item => {
   return (
     <article className='cv__article' key={item.id}>
       <aside>
-        <span>{ item.startDate } - { item.endDate }</span>
+        <span>{ item.startDate } - { item.endDate || 'now' }</span>
       </aside>
       <div className='cv__article-content'>
         <h3>{ item.title }</h3>
@@ -103,7 +103,7 @@ const renderEmployment = items => items.map(item => {
   return (
     <article className='cv__article' key={item.id}>
       <aside>
-        <span>{ item.startDate } - { item.endDate }</span>
+        <span>{ item.startDate } - { item.endDate || 'now' }</span>
       </aside>
       <div className='cv__article-content'>
         <h3>{ item.position }</h3>
@@ -117,7 +117,7 @@ const renderVolunteering = items => items.map(item => {
   return (
     <article className='cv__article' key={item.id}>
       <aside>
-        <span>{ item.startDate ? `${item.startDate} - ` : '' }{ item.endDate }</span>
+        <span>{ item.startDate ? `${item.startDate} - ` : '' }{ item.endDate || 'now' }</span>
       </aside>
       <div className='cv__article-content'>
         <h3>{ item.title }</h3>
