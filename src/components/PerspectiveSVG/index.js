@@ -6,7 +6,7 @@ const randColor = () => {
   return colors[Math.floor(Math.random() * colors.length)]
 }
 
-const Line = ({ x1, y1, x2, y2, c }) => (
+const Line = ({ x1, y1, x2, y2, c = "var(--color_accent)" }) => (
   <line
     x1={ x1.toString() }
     y1={ y1.toString() }
@@ -39,12 +39,17 @@ const GenLines = ({ w, h }) => {
         y1={ origin[i].y }
         x2={ horizon.x }
         y2={ horizon.y }
-        c={ c }
         />
     )
   }
   return (
     <>
+      <style>
+      { `:root {
+          --color_accent: ${c}
+        }`
+      }
+      </style>
       { lines }
     </>
   )
