@@ -2,6 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import Menu from '../../components/Menu/'
 import Footer from '../../components/Footer/'
+import PerspectiveSVG from '../../components/PerspectiveSVG/'
+import SunSVG from '../../components/SunSVG/'
 
 import './reset.css'
 import './global.sass'
@@ -11,6 +13,8 @@ const PageLayout = ({ title, children }) => {
   return (
     <>
       <Helmet title={ title ? `${title} - Aurélien Davennes` : 'Aurélien Davennes' } />
+      <PerspectiveSVG />
+      <SunSVG />
       <div className='page'>
         <header>
           <Menu />
