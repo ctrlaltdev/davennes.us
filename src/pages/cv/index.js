@@ -134,7 +134,6 @@ const renderInterests = items => <ul className='cv__list cv__interests'>{ items.
 const renderLanguages = items => <ul className='cv__list cv__langs'>{ items.map(item => <li key={item}>{item}</li>) }</ul>
 
 const CV = () => {
-  console.info(CVQuery)
   return (
     <PageLayout title='Curriculum Vitae'>
       <StaticQuery
