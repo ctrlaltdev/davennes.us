@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import fetch from 'isomorphic-unfetch'
 import PageLayout from '../../layouts/Page/'
-import './contact.sass'
+import './contact.scss'
 
 const ContactPage = () => {
   const [name, setName] = useState()

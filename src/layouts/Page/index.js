@@ -6,8 +6,8 @@ import PerspectiveSVG from '../../components/PerspectiveSVG/'
 import SunSVG from '../../components/SunSVG/'
 
 import './reset.css'
-import './global.sass'
-import './page.sass'
+import './global.scss'
+import './page.scss'
 
 const PageLayout = ({ title, children }) => {
   return (

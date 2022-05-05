@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLayout from '../layouts/Page/'
-import './index.sass'
+import './index.scss'
 
 export default function Home() {
   return (

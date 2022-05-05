@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './sunsvg.sass'
+import './sunsvg.scss'
 
 const randColor = () => {
   const colors = ['Khaki', 'Coral', 'OrangeRed 	', 'DarkOrange', 'IndianRed', 'Salmon', 'FireBrick', 'Crimson']

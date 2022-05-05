@@ -2,7 +2,7 @@ import React from 'react'
 import PageLayout from '../../layouts/Page/'
 import { StaticQuery, graphql } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
-import './cv.sass'
+import './cv.scss'
 
 const renderEducation = items => items.map(item => {
   return (

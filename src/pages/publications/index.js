@@ -36,9 +36,7 @@ const PublicationsQuery = graphql`
       subtitle
       type
       mainImage {
-        fluid(maxWidth: 1200 quality: 100) {
-          src
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
         title
         description
       }

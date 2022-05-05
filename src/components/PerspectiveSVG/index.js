@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './perspectivesvg.sass'
+import './perspectivesvg.scss'
 
 const randColor = () => {
   const colors = ['Turquoise', 'Aquamarine', 'SteelBlue', 'MidnightBlue', 'Chartreuse', 'SpringGreen', 'ForestGreen', 'OliveDrab', 'Gold', 'Khaki', 'Coral', 'OrangeRed 	', 'DarkOrange', 'IndianRed', 'Salmon', 'FireBrick', 'Crimson', 'MediumVioletRed', 'HotPink', 'DeepPink', 'Orchid', 'Purple', 'RebeccaPurple', 'Indigo']

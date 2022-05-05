@@ -1,24 +1,25 @@
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'gatsby'
-import './404.sass'
+import './404.scss'
+
+const looking = (i = -1) => {
+  const datawrap = document.querySelector('span.looking')
+  datawrap.removeChild(datawrap.querySelector('span'))
+  const datatext = ['⌬', 'Ҩ', 'ǿ', 'ȣ', 'ȡ', 'Φ', 'θ', 'ϼ', 'Ю', '℧', '⏣', '⊡']
+  const dataslide = document.createElement('span')
+  const index = (i + 1) % datatext.length
+  const dataslideTxt = document.createTextNode(datatext[index])
+  dataslide.appendChild(dataslideTxt)
+  datawrap.appendChild(dataslide)
+  dataslide.classList.add('slideup')
+  
+  const loop = setTimeout(() => { looking(index) }, 2000)
+  
+  return () => clearTimeout(loop)
+}
 
 export default function Home() {
-  const looking = (i = -1) => {
-    const datawrap = document.querySelector('span.looking')
-    datawrap.removeChild(datawrap.querySelector('span'))
-    const datatext = ['⌬', 'Ҩ', 'ǿ', 'ȣ', 'ȡ', 'Φ', 'θ', 'ϼ', 'Ю', '℧', '⏣', '⊡']
-    const dataslide = document.createElement('span')
-    const index = (i + 1) % datatext.length
-    const dataslideTxt = document.createTextNode(datatext[index])
-    dataslide.appendChild(dataslideTxt)
-    datawrap.appendChild(dataslide)
-    dataslide.classList.add('slideup')
-    
-    const loop = setTimeout(() => { looking(index) }, 2000)
-    
-    return () => clearTimeout(loop)
-  }
 
   useEffect(looking, [])
 

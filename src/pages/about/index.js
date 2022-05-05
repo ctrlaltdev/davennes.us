@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import PageLayout from '../../layouts/Page/'
 import ReactMarkdown from 'react-markdown'
-import './about.sass'
+import './about.scss'
 
 const AboutPage = () => {
   return (

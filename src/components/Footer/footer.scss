@@ -1,0 +1,15 @@
+footer {
+  width: 100%;
+  align-self: flex-end;
+  p {
+    font-family: monospace, sans-serif;
+    text-align: center;
+    padding: 2rem;
+    a {
+      color: var(--color_fg2);
+      &:visited {
+        color: var(--color_fg2);
+      }
+    }
+  }
+}

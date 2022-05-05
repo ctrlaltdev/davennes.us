@@ -2,7 +2,7 @@ const path = require('path')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
+  
   const result = await graphql(`
     query {
       allContentfulPublications {
@@ -12,9 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
           subtitle
           type
           mainImage {
-            fluid(maxWidth: 1200 quality: 100) {
-              src
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
             title
             description
           }

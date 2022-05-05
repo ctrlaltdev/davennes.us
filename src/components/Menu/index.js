@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 import { Link } from 'gatsby'
-import './menu.sass'
+import './menu.scss'
 
 const Menu = () => {
   const [open, toggleOpen] = useState(false)

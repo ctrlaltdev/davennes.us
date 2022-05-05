@@ -1,6 +1,4 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
-})
+require('dotenv').config()
 
 module.exports = {
   /* Your site config here */
@@ -11,12 +9,9 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: 'gatsby-plugin-sass',
-      options: {
-        indentedSyntax: true
-      }
-    }, 
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sass`, 
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-s3`,
