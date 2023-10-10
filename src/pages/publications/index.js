@@ -33,8 +33,8 @@ const PublicationsQuery = graphql`
     nodes {
       id
       title
-      subtitle2 {
-        raw
+      subtitle {
+        subtitle
       }
       type
       mainImage {
@@ -43,8 +43,8 @@ const PublicationsQuery = graphql`
         description
       }
       publicationDate(formatString: "YYYY")
-      description2 {
-        raw
+      description {
+        description
       }
     }
   }

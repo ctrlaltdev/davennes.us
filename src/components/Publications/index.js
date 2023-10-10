@@ -16,9 +16,11 @@ const Publications = ({ items }) => items.map(item => {
       <div className='pub__article-content'>
         <div className='pub__article-meta'><span><Link to={`/publications/${item.publicationDate}/`}>{ item.publicationDate }</Link></span> <span>{ item.type }</span></div>
         <h3>{ item.title }</h3>
-        <p>{ item.subtitle }</p>
         <div className='markdown'>
-          <ReactMarkdown>{ item.description2?.raw }</ReactMarkdown>
+          <ReactMarkdown>{ item.subtitle?.subtitle }</ReactMarkdown>
+        </div>
+        <div className='markdown'>
+          <ReactMarkdown>{ item.description?.description }</ReactMarkdown>
         </div>
       </div>
     </article>
