@@ -33,7 +33,9 @@ const PublicationsQuery = graphql`
     nodes {
       id
       title
-      subtitle
+      subtitle2 {
+        raw
+      }
       type
       mainImage {
         gatsbyImageData(layout: FULL_WIDTH)
@@ -41,8 +43,8 @@ const PublicationsQuery = graphql`
         description
       }
       publicationDate(formatString: "YYYY")
-      description {
-        description
+      description2 {
+        raw
       }
     }
   }

@@ -26,9 +26,9 @@ const renderPublications = items => items.map(item => {
       </aside>
       <div className='cv__article-content'>
         <h3>{ item.title }</h3>
-        <p>{ item.subtitle }</p>
+        <p>{ item.subtitle2?.raw }</p>
         <div className='markdown'>
-          <ReactMarkdown>{ item.description.description }</ReactMarkdown>
+          <ReactMarkdown>{ item.description }</ReactMarkdown>
         </div>
       </div>
     </article>
@@ -92,7 +92,7 @@ const renderResponsabilities = items => items.map(item => {
         <h3>{ item.title }</h3>
         <p>{ item.organization }</p>
         <div className='markdown'>
-          <ReactMarkdown>{ item.description.description }</ReactMarkdown>
+          <ReactMarkdown>{ item.description?.description }</ReactMarkdown>
         </div>
       </div>
     </article>
@@ -121,7 +121,7 @@ const renderVolunteering = items => items.map(item => {
       </aside>
       <div className='cv__article-content'>
         <h3>{ item.title }</h3>
-        <p>{ item.description.description }</p>
+        <p>{ item.description?.description }</p>
       </div>
     </article>
   )
@@ -211,9 +211,11 @@ const CVQuery = graphql`
       id
       title
       type
-      subtitle
-      description {
-        description
+      subtitle2 {
+        raw
+      }
+      description2 {
+        raw
       }
       publicationDate(formatString: "YYYY")
     }

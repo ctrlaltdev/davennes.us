@@ -9,7 +9,9 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           id
           title
-          subtitle
+          subtitle2 {
+            raw
+          }
           type
           mainImage {
             gatsbyImageData(layout: FULL_WIDTH)
@@ -17,8 +19,8 @@ exports.createPages = async ({ graphql, actions }) => {
             description
           }
           publicationDate(formatString: "YYYY")
-          description {
-            description
+          description2 {
+            raw
           }
         }
       }
@@ -30,6 +32,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
   for (let i = 0; i < pubs.length; i++) {
     const pub = pubs[i]
+
+    pub.subtitle = pub.subtitle2?.raw
+    pub.description = pub.description2?.raw
+
     if (!years[pub.publicationDate]) {
       years[pub.publicationDate] = []
     }

@@ -18,7 +18,7 @@ const Publications = ({ items }) => items.map(item => {
         <h3>{ item.title }</h3>
         <p>{ item.subtitle }</p>
         <div className='markdown'>
-          <ReactMarkdown>{ item.description.description }</ReactMarkdown>
+          <ReactMarkdown>{ item.description2?.raw }</ReactMarkdown>
         </div>
       </div>
     </article>
